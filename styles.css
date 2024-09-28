@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@keyframes floating {
+    from {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5em);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+:root {
+    --color-primary: #7469B6;
+    --color-secondary: #192069;
+    --color-border: #524A84;
+    --color-white: #F5F5F5;
+    --color-black: #4D4C4C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+main {
+    height: 100vh;
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+}
+
+section {
+    padding: 0 10%;
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+h1 {
+    font-size: 4em;
+    font-family: 'Krona One', sans-serif;
+}
+
+footer {
+    padding: 1.25em 10%;
+    font-size: 1.25em;
+}
+
+/* HERO */
+
+section.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.hero h1 {
+    color: var(--color-primary);
+}
+
+.hero .mobile {
+    display: none;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+.hero-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.hero-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    display: flex;
+    background-color: var(--color-primary);
+    padding: 0.75em 1.25em;
+    border-radius: 1.5em;
+    align-items: center;
+    gap: 0.75em;
+    font-size: 0.7em;
+    transition: transform 0.3s;
+}
+
+.hero-links a:hover {
+    transform: scale(1.05);
+}
+
+.hero-links img {
+    width: 1.8em;
+}
+
+.profile-img-container {
+    width: 40%;
+    position: relative;
+}
+
+.profile-img {
+    width: 95%;
+    border-radius: 1em 0;
+    transition: transform 0.3s;
+}
+
+.profile-img-container:hover .profile-img {
+    transform: scale(1.05);
+}
+
+.cursor-container {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    white-space: nowrap;
+}
+
+.cursor-container span {
+    position: relative;
+    top: 1.3em;
+    left: -0.95em;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.7em;
+    border-radius: 0 1em 1em 1em;
+    font-size: 0.8em;
+    border: 0.2em solid var(--color-border);
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-container:hover .cursor-container {
+    animation: floating 1s infinite;
+}
+
+
+/* PROJECTS */
+
+section.projects {
+    background-color: var(--color-primary);
+    padding: 5% 10%;
+    display: flex;
+    gap: 3em;
+    flex-direction: column;
+}
+
+.projects h1 {
+    color: var(--color-white);
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
+    height: 100%;
+}
+
+.card {
+    width: 48%;
+    display: flex;
+    gap: 1em;
+    background-color: var(--color-white);
+    border-radius: 1.2em;
+    padding: 1em;
+    height: fit-content;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-0.5em);
+    box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    border-radius: 1em;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+}
+
+.card-info a {
+    color: var(--color-primary);
+    font-size: 0.9em;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.tag {
+    border: 0.1em solid var(--color-secondary);
+    width: fit-content;
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1200px) {
+    .projects {
+        height: fit-content;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        scroll-snap-type: none;
+    }
+    section.hero {
+        padding: 10% 10%;
+        height: fit-content;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 2em;
+    }
+
+    .hero h1, .hero h2 {
+        display: none;
+    }
+    
+    .hero .mobile {
+        display: block;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-links {
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .hero .profile-img-container {
+        width: 80%;
+        align-self: center;
+    }
+
+    .cursor-container {
+        position: absolute;
+        top: 60%;
+        left: 65%;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .card {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    body {
+        font-size: 0.8em;
+    }
+}
